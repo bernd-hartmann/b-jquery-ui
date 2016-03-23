@@ -5,8 +5,29 @@
 <!--<script src="node_modules/webcomponents.js/webcomponents.min.js"></script>-->
 <!--<script src="node_modules/webcomponents.js/webcomponents-lite.min.js"></script>-->
 <link rel="import" href="polymer/b-jquery-ui-widget/jquery-ui-widget.html">
-<jquery-ui-widget id="myButton1" name="button" options='{"label":"Hallo Welt1"}'>
-    <span>customContent</span>
-</jquery-ui-widget>
-<jquery-ui-widget id="myButton2" name="button" options='{"label":"Hallo Welt2"}'></jquery-ui-widget>
+<h2>Button</h2>
+<jquery-ui-widget id="myButton1" name="button" options='{"label":"Hello World from options object"}'></jquery-ui-widget>
+<jquery-ui-widget id="myButton3" name="button" options='{}'>Hello World from content</jquery-ui-widget>
+<h2>Slider</h2>
 <jquery-ui-widget id="mySlider" name="slider" options='{}'></jquery-ui-widget>
+<h2>Accordion</h2>
+<jquery-ui-widget id="myAccordion" name="accordion" options='{}'>
+        <h3>Section 1</h3>
+        <div>
+            <p>
+                Mauris mauris ante, blandit et, ultrices a, suscipit eget, quam. Integer
+                ut neque. Vivamus nisi metus, molestie vel, gravida in, condimentum sit
+                amet, nunc. Nam a nibh. Donec suscipit eros. Nam mi. Proin viverra leo ut
+                odio. Curabitur malesuada. Vestibulum a velit eu ante scelerisque vulputate.
+            </p>
+        </div>
+        <h3>Section 2</h3>
+        <div>
+            <p>
+                Sed non urna. Donec et ante. Phasellus eu ligula. Vestibulum sit amet
+                purus. Vivamus hendrerit, dolor at aliquet laoreet, mauris turpis porttitor
+                velit, faucibus interdum tellus libero ac justo. Vivamus non quam. In
+                suscipit faucibus urna.
+            </p>
+        </div>
+</jquery-ui-widget>

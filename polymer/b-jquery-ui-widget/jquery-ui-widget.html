@@ -8,7 +8,9 @@
 
   <template>
     <div class="myWrapper">
-      <div id="jqueryUiWidgetPlaceholder"></div>
+      <div id="jqueryUiWidgetPlaceholder">
+        <content></content><!-- pass through content-->
+      </div>
     </div>
   </template>
 
@@ -40,6 +42,11 @@
         var widgetConstructorFunctionName = this.name;
         $("#jqueryUiWidgetPlaceholder")[widgetConstructorFunctionName](widgetConfigurationObject);
         $("#jqueryUiWidgetPlaceholder").attr("id",widgetId);// give placeholder new id
+
+
+        console.log(this.childNodes);
+
+
       }
     });
   </script>
