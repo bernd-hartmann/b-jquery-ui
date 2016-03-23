@@ -1,0 +1,55 @@
+<link rel="import" href="../bower_components/polymer/polymer.html">
+<link rel="stylesheet" href="jquery-ui-widget.css">
+<link rel="stylesheet" href="../../node_modules/jquery-ui/themes/redmond/jquery-ui.min.css">
+<script src="../../node_modules/jquery/dist/jquery.js"></script>
+<!--<script src="../../node_modules/jquery-ui/jquery-ui.js"></script>-->
+<!--<script src="../../node_modules/jquery-ui/core.js"></script>-->
+<script src="../../node_modules/jquery-ui/custom.js"></script>
+
+<dom-module id="jquery-ui-widget">
+
+  <template>
+    <div class="myWrapper">
+      <div id="jqueryUiWidgetPlaceholder"></div>
+    </div>
+  </template>
+
+  <script>
+    Polymer({
+      is: 'jquery-ui-widget',
+      properties: {
+        name: {
+          type: String,
+          value: ""
+        },
+        options: {
+          type: String,
+          value: "{}"
+        },
+        id: {
+          type: String,
+          value: ""// create unique id if not given
+        },
+      },
+      initButton: function(parameterXy){
+
+      },
+      created: function() {
+
+      },
+      ready: function () {
+        var widgetId = this.id;
+        //var widgetConfigurationObjectString = '{"label":"Hallo Welt"}';
+        var widgetConfigurationObjectString = this.options;
+        var widgetConfigurationObject = JSON.parse(widgetConfigurationObjectString)
+        var widgetConstructorFunctionName = this.name;
+        $("#jqueryUiWidgetPlaceholder")[widgetConstructorFunctionName](widgetConfigurationObject);
+        $("#jqueryUiWidgetPlaceholder").attr("id",widgetId);// give placeholder new id
+      }
+    });
+  </script>
+  <style>
+
+  </style>
+
+</dom-module>

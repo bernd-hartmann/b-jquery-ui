@@ -1,0 +1,3 @@
+Polymer: https://www.polymer-project.org
+Polymer-API: https://www.polymer-project.org/1.0/docs/devguide/feature-overview.html
+Polymer-Elemente: https://elements.polymer-project.org/
