@@ -23,30 +23,47 @@
           value: ""
         },
         options: {
-          type: String,
-          value: "{}"
+          type: Object,
+          value: {}
         },
         id: {
           type: String,
-          value: ""// create unique id if not given
+          value: ""// create unique id if not given, polymer properties computed: 'computeFullName(first, last)'
         },
+        on: {
+          type: String,
+          value:""// no default value
+        }
       },
       created: function() {
 
       },
       ready: function () {
-        var widgetId = this.id;
+        var $widget = this._createWidget();
+        this._attachEventHandler($widget);
+      },
+      _createWidget(){
         //var widgetConfigurationObjectString = '{"label":"Hallo Welt"}';
-        var widgetConfigurationObjectString = this.options;
-        var widgetConfigurationObject = JSON.parse(widgetConfigurationObjectString)
+        //var widgetConfigurationObject = JSON.parse(widgetConfigurationObjectString)// maybe i need this again
+        var widgetId = this.id;
+        var widgetConfigurationObject = this.options;
         var widgetConstructorFunctionName = this.name;
-        $("#jqueryUiWidgetPlaceholder")[widgetConstructorFunctionName](widgetConfigurationObject);
-        $("#jqueryUiWidgetPlaceholder").attr("id",widgetId);// give placeholder new id
+        var $widget = $("#jqueryUiWidgetPlaceholder")[widgetConstructorFunctionName](widgetConfigurationObject);
+        $widget.attr("id",widgetId);// give placeholder new id TODO: not performant that way setting id after init
+        return $widget;
+      },
+      _attachEventHandler($widget){
+        //var eventName = "click"
+        var eventName = this.on;
+        var eventHandlerAsString = "function(){alert('servusFromString');}";
+        var selfExecutingFunctionString = "("+eventHandlerAsString+")();";
+        // execute it TODO: Security Check:-)
 
-
-        console.log(this.childNodes);
-
-
+        //var eventHandler = function(){alert("jeah");};
+        $widget.on(eventName,function(){
+          //eventHandler();
+          eval(selfExecutingFunctionString);
+        });
       }
     });
   </script>
