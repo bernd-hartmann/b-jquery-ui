@@ -24,7 +24,7 @@
         },
         options: {
           type: Object,
-          value: {}
+          value: undefined
         },
         id: {
           type: String,
@@ -41,6 +41,21 @@
       ready: function () {
         var $widget = this._createWidget();
         this._attachEventHandler($widget);
+        //console.log(this.shadowRoot);
+        //console.log(this.parentNode);
+
+        var $rootNode = this._getRootNode();
+      console.log(this._getAttributes($rootNode));
+      },
+      _getRootNode(){
+        var $rootNode = $(this.parentNode).find("#"+this.id);
+        return $rootNode;
+      },
+      _getAttributes($node){
+        return $node[0].attributes;
+      },
+      _getEventHandler(){
+
       },
       _createWidget(){
         //var widgetConfigurationObjectString = '{"label":"Hallo Welt"}';
