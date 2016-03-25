@@ -1,4 +1,4 @@
-document.registerElement('b-jquery-ui-widget',{
+document.registerElement('b-jquery-ui',{
 
 
 });
