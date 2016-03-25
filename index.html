@@ -1,35 +1,50 @@
 <!doctype html>
 <meta charset="utf-8">
 <head>
-    <title>b-jquery-ui : WebComponent Wrapper for jQuery UI</title>
-    <link rel="import" href="polymer/b-jquery-ui-widget/jquery-ui-widget.html">
+    <title>b-jquery-ui-widget : WebComponent Wrapper for jQuery UI</title>
+    <link rel="import" href="polymer/b-jquery-ui-widget/b-jquery-ui.html">
     <script src="node_modules/webcomponents.js/webcomponents.js"></script>
     <!--<script src="node_modules/webcomponents.js/webcomponents.min.js"></script>-->
     <!--<script src="node_modules/webcomponents.js/webcomponents-lite.min.js"></script>-->
 </head>
 <body>
-<h1>b-jquery-ui</h1>
-<p>WebComponent Wrapper for jQuery UI</p>
+<h1>&lt;b-jquery-ui&gt;</h1>
+<p>WebComponent Wrapper for jQuery UI.
+Let any element b the jquery-ui element you want to.
+    <pre>
+    <code>
+        &lt;b-jquery-ui
+
+            id=&quot;myButton&quot;
+            name=&quot;button&quot;
+            on-click=&quot;function(){alert('hello world');}&quot;
+            options='{&quot;label&quot;:&quot;click me&quot;}'&gt;
+
+        &lt;/b-jquery-ui&gt;
+    </code>
+    </pre>
+</p>
+&lt;B&gt;ernd hartmann
 <h2>Button</h2>
-<jquery-ui-widget id="myButton1"
+<b-jquery-ui id="myButton1"
                   name="button"
                   on-click="function(){alert('servusFromHtml');}"
                   options='{"label":"Hello World from options object"}'>
-</jquery-ui-widget>
+</b-jquery-ui>
 
-<jquery-ui-widget id="myButton2"
+<b-jquery-ui id="myButton2"
                   name="button"
                   on-mouseover="function(){alert('onMouseOver');}">Hello World from content
-</jquery-ui-widget>
+</b-jquery-ui>
 
 <h2>Slider</h2>
-<jquery-ui-widget id="mySlider"
+<b-jquery-ui id="mySlider"
                   name="slider"
                   options='{}'>
-</jquery-ui-widget>
+</b-jquery-ui>
 
 <h2>Accordion</h2>
-<jquery-ui-widget id="myAccordion"
+<b-jquery-ui id="myAccordion"
                   name="accordion"
                   options='{}'>
     <h3>Section 1</h3>
@@ -50,7 +65,14 @@
             suscipit faucibus urna.
         </p>
     </div>
-</jquery-ui-widget>
+</b-jquery-ui>
 
+<h2>Draggable</h2>
+<b-jquery-ui id="myDraggableElement" name="draggable" options="{}">
+    <div style="border:2px solid gray; width:200px;">
+        <h3>the draggable </h3>
+    content of draggable
+    </div>
+</b-jquery-ui>
 </body>
 </html>

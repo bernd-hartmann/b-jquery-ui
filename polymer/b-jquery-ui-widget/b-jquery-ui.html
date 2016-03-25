@@ -1,14 +1,14 @@
 <link rel="import" href="../bower_components/polymer/polymer.html">
-<link rel="stylesheet" href="jquery-ui-widget.css">
-<link rel="stylesheet" href="../../node_modules/jquery-ui/themes/redmond/jquery-ui.min.css">
+<link rel="stylesheet" href="b-jquery-ui.css">
+<link rel="stylesheet" href="../../node_modules/jquery-ui/themes/smoothness/jquery-ui.min.css">
 <script src="../../node_modules/jquery/dist/jquery.min.js"></script>
 <script src="../../node_modules/jquery-ui/custom.js"></script>
 
-<dom-module id="jquery-ui-widget">
+<dom-module id="b-jquery-ui">
 
   <template>
-    <div class="myWrapper">
-      <div id="jqueryUiWidgetPlaceholder">
+    <div class="b-jquery-ui-wrapper">
+      <div id="jqueryUiPlaceholder">
         <content></content><!-- pass through content-->
       </div>
     </div>
@@ -16,7 +16,7 @@
 
   <script>
     Polymer({
-      is: 'jquery-ui-widget',
+      is: 'b-jquery-ui',
       properties: {
         name: {
           type: String,
@@ -76,7 +76,7 @@
         var widgetId = this.id;
         var widgetConfigurationObject = this.options;
         var widgetConstructorFunctionName = this.name;
-        var $widget = $("#jqueryUiWidgetPlaceholder")[widgetConstructorFunctionName](widgetConfigurationObject);
+        var $widget = $("#jqueryUiPlaceholder")[widgetConstructorFunctionName](widgetConfigurationObject);
         $widget.attr("id",widgetId);// give placeholder new id TODO: not performant that way setting id after init
         return $widget;
       },
