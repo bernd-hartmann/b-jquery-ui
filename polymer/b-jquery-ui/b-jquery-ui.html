@@ -1,8 +1,9 @@
-<link rel="import" href="../bower_components/polymer/polymer.html">
+<link rel="import" href="../../bower_components/polymer/polymer.html">
 <link rel="stylesheet" href="b-jquery-ui.css">
 <link rel="stylesheet" href="../../node_modules/jquery-ui/themes/smoothness/jquery-ui.min.css">
 <script src="../../node_modules/jquery/dist/jquery.min.js"></script>
 <script src="../../node_modules/jquery-ui/custom.js"></script>
+<script src="./b-jquery-ui.js"></script>
 
 <dom-module id="b-jquery-ui">
 
@@ -15,6 +16,8 @@
   </template>
 
   <script>
+    var bJqueryUI = new BJQueryUI();
+
     Polymer({
       is: 'b-jquery-ui',
       properties: {
@@ -39,21 +42,8 @@
 
       },
       ready: function () {
-        var $widget = this._createWidget();
-        this._attachEventHandlers($widget);
-
-      },
-
-      _getAttributesStartingWithOnDash(attributesNodeMap){
-        // e.g on-click, on-mouseover
-
-        // use jquery map, because attributesNodeMap isn't a real array
-        var attributesStartingWithOnDash = $.map(attributesNodeMap,function (attribute) {
-          if(attribute.name.indexOf("on-")!==-1){
-            return attribute;
-          }
-        });
-        return attributesStartingWithOnDash;
+        var $widget = bJqueryUI.createWidget(this.name, this.options, this.id);
+        bJqueryUI.attachEventHandlers($widget, this._getAttributes());
       },
 
       // TODO: search for better solution to get root node
@@ -64,45 +54,6 @@
 
       _getAttributes(){
         return this._getRootNode()[0].attributes;
-      },
-
-      _getEventHandler(){
-
-      },
-
-      _createWidget(){
-        //var widgetConfigurationObjectString = '{"label":"Hallo Welt"}';
-        //var widgetConfigurationObject = JSON.parse(widgetConfigurationObjectString)// maybe i need this again
-        var widgetId = this.id;
-        var widgetConfigurationObject = this.options;
-        var widgetConstructorFunctionName = this.name;
-        var $widget = $("#jqueryUiPlaceholder")[widgetConstructorFunctionName](widgetConfigurationObject);
-        $widget.attr("id",widgetId);// give placeholder new id TODO: not performant that way setting id after init
-        return $widget;
-      },
-
-      _attachEventHandlers($widget){
-        var attributesNodeMap = this._getAttributes();
-        var attributesStartingWithOnDash = this._getAttributesStartingWithOnDash(attributesNodeMap);
-        for (var i=0;i<attributesStartingWithOnDash.length;i++){
-          var attribute = attributesStartingWithOnDash[i];
-          // e.g.    on-click ---> ["on-","click"] --> [1]
-          var eventName = attribute.name.split("on-")[1];
-          var eventHandler = attribute.nodeValue;
-          this._attachEventHandler($widget,eventName, eventHandler);
-        }
-      },
-
-      _attachEventHandler($widget,eventName,eventHandlerAsString){
-        //eventName = "click"
-        //eventHandlerAsString = "function(){alert('servusFromString');}";
-        var selfExecutingFunctionString = "("+eventHandlerAsString+")();";
-        // execute it TODO: Security Check:-)
-        //var eventHandler = function(){alert("jeah");};
-        $widget.on(eventName,function(){
-          //eventHandler();
-          eval(selfExecutingFunctionString);
-        });
       }
     });
   </script>
