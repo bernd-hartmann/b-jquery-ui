@@ -48,8 +48,7 @@
 
       // TODO: search for better solution to get root node
       _getRootNode(){
-        var $rootNode = $(this.parentNode).find("#"+this.id);
-        return $rootNode;
+        return $(this.parentNode).find("#"+this.id);
       },
 
       _getAttributes(){
