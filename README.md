@@ -1,2 +1,2 @@
 # b-jquery-ui
-WebComponent wrapper for jQuery UI
+TestKomponent wrapper for jQuery UI
